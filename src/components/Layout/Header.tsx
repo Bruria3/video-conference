@@ -1,15 +1,30 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Box } from '@mui/material';
-import '../../style/Header.scss';
+import React from "react";
+import { Typography, Box, Badge } from "@mui/material";
+import "../../style/Header.scss";
+import { useAppSelector } from "../../services/hooks";
+import { selectSessionDetails } from "../../services/session/sessionSlice";
 
 export const Header: React.FC = () => {
+  const sessionDet = useAppSelector(selectSessionDetails);
+
   return (
-    <AppBar position="sticky" className="video-header">
-      <Toolbar className="video-header-text-wrapper">
-        <Typography variant="h6">
-          <Box> Video Conference </Box>
+    <Box className="video-header">
+      <Box className="right-side">
+        <Typography variant="h6" className="header-text">
+          משרד המשפטים, ועדת ערר לענייני קורונה - השתתפות בהוצאות קבועות
         </Typography>
-      </Toolbar>
-    </AppBar>
+        <Typography variant="subtitle1" className="header-text">
+          תיק מספר {sessionDet.discussionNo}
+        </Typography>
+      </Box>
+      {sessionDet.isRecorded && (
+        <Box className="left-side">
+          <Badge color="error" badgeContent={" "} />
+          <Typography variant="subtitle2" className="header-text">
+            מקליט
+          </Typography>
+        </Box>
+      )}
+    </Box>
   );
-}
+};

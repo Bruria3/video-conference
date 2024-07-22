@@ -11,15 +11,15 @@ html {
 body {
   margin: 0;
   background-color: #3f3f3f;
-  text-align: center;
+  direction: rtl;
 }
 
 .video-conference-app {
   display: grid;
-  grid-template-rows: 1fr 9fr;
+  grid-template-columns: 1fr 9fr;
+  height: calc(100vh - 100px);
 }
 
 .video-conference-layout-wrapper{
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+  direction: rtl;
 }

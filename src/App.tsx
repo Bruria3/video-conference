@@ -5,6 +5,7 @@ import { fetchUsers } from "./services/users/userService";
 import { useAppDispatch, useAppSelector } from "./services/hooks";
 import { Box } from "@mui/material";
 import { navItems } from "./utils/constants";
+import { fetchSessionDetails } from "./services/session/sessionService";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -16,9 +17,13 @@ const App = () => {
     dispatch(fetchUsers());
   };
 
-  useEffect(() => {
+  const getSession = ()=>{
+    dispatch(fetchSessionDetails());
+  }
 
+  useEffect(() => {
     getUsers();
+    getSession();
 
     // refreshing the users if connected to server
     // const interval = setInterval(() => {
@@ -31,10 +36,10 @@ const App = () => {
 
   return (
     <Router>
+      <Header />
       <Box className="video-conference-app">
-        <Header />
+        <NavBar />
         <Box className="video-conference-layout-wrapper">
-          <NavBar />
           <Routes>
             {navItems.map((route) => (
               <Route path={route.path} Component={route.component} />

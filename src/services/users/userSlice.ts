@@ -10,7 +10,6 @@ export interface UserState {
     id: number;
     isJudge: boolean;
   };
-  totalAmount: number;
   readyUsers: IUser[] | undefined;
   status: APIStatus;
   error: APIError;
@@ -26,7 +25,6 @@ const initialState: UserState = {
     id: 984678,
     isJudge: false,
   },
-  totalAmount: 0,
   readyUsers: [],
   status: APIStatus.IDLE,
   error: { code: 0, message: "" },
@@ -49,7 +47,6 @@ export const userSlice = createSlice({
         fetchUsers.fulfilled,
         (state: UserState, action: PayloadAction<UserState>) => {
           state.users = action.payload.users;
-          state.totalAmount = action.payload.totalAmount;
           state.status = APIStatus.FULFILLED;
         }
       )
