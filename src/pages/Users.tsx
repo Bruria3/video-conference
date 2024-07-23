@@ -17,9 +17,9 @@ export const Users = () => {
   //     setRespondersGrids(users.responders);
   // }, [users])
 
-  const renderGrids = (data: IUser[]) => {
+  const renderGrids = (data: IUser[], imgIndex = 0) => {
     return data.map((user, index: number) => (
-      <UserGrid key={user.id} user={user} index={index} />
+      <UserGrid key={user.id} user={user} index={index} imgIndex={imgIndex}/>
     ));
   };
 
@@ -27,7 +27,7 @@ export const Users = () => {
     <Box className="video-layout">
       <Box className="video-grids-wrapper">
         <Box className="container-grid">{renderGrids(users.judges)}</Box>
-        <Box className="container-grid">{renderGrids(users.responders)}</Box>
+        <Box className="container-grid">{renderGrids(users.responders, users.judges.length)}</Box>
       </Box>
       <Box className="video-tools-wrapper">
         <Box className="video-live-wrapper">

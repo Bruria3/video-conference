@@ -4,12 +4,9 @@ import "../../style/User.scss";
 import {
   Card,
   CardMedia,
-  CardContent,
-  CardActions,
   IconButton,
   Typography,
   Box,
-  Grid,
 } from "@mui/material";
 import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import MicOffIcon from "@mui/icons-material/MicOff";
@@ -17,13 +14,14 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 interface UserGridProps {
   user: IUser;
   index: number;
+  imgIndex: number;
 }
 
 export const UserGrid = (props: UserGridProps) => {
-  const { index, user } = props;
+  const { index, user, imgIndex } = props;
 
   return (
-    <Grid className="user-grid" item xs={12} sm={6} md={4} lg={3} sx={{ maxWidth: 500 }}>
+    <Box className="user-grid">
       <Card className={`card-layout layout-inner-${index + 1}`}>
         <Box className="text-type-wrapper">
           <Typography variant="body2" color="text.secondary">
@@ -33,7 +31,7 @@ export const UserGrid = (props: UserGridProps) => {
         <CardMedia
           component="img"
           height="100%"
-          image={`/img/man${index + 1}.jpg`}
+          image={`/img/man${index + imgIndex + 1}.jpg`}
           alt={user.type}
         />
         <Box className="card-bottom-wrapper">
@@ -50,6 +48,6 @@ export const UserGrid = (props: UserGridProps) => {
           </IconButton>
         </Box>
       </Card>
-    </Grid>
+    </Box>
   );
 };
