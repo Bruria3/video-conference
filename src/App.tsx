@@ -17,9 +17,9 @@ const App = () => {
     dispatch(fetchUsers());
   };
 
-  const getSession = ()=>{
+  const getSession = () => {
     dispatch(fetchSessionDetails());
-  }
+  };
 
   useEffect(() => {
     getUsers();
@@ -36,15 +36,17 @@ const App = () => {
 
   return (
     <Router>
-      <Header />
-      <Box className="video-conference-app">
-        <NavBar />
-        <Box className="video-conference-layout-wrapper">
-          <Routes>
-            {navItems.map((route) => (
-              <Route path={route.path} Component={route.component} />
-            ))}
-          </Routes>
+      <Box className="root-container">
+        <Header />
+        <Box className="video-conference-app">
+          <NavBar />
+          <Box className="video-conference-layout-wrapper">
+            <Routes>
+              {navItems.map((route) => (
+                <Route path={route.path} Component={route.component} />
+              ))}
+            </Routes>
+          </Box>
         </Box>
       </Box>
     </Router>

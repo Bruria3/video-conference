@@ -4,7 +4,7 @@ import { UserGrid } from "../components/Users/UserGrid";
 import "../style/User.scss";
 import { selectUser } from "../services/users/userSlice";
 import { useAppSelector } from "../services/hooks";
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import { Share, Camera, Microphone, Timer } from "../components/Tools";
 
 export const Users = () => {
@@ -26,12 +26,8 @@ export const Users = () => {
   return (
     <Box className="video-layout">
       <Box className="video-grids-wrapper">
-        <Grid container spacing={2} justifyContent="center" className="container-grid">
-          {renderGrids(users.judges)}
-        </Grid>
-        <Grid container spacing={2} justifyContent="center" className="container-grid">
-          {renderGrids(users.responders)}
-        </Grid>
+        <Box className="container-grid">{renderGrids(users.judges)}</Box>
+        <Box className="container-grid">{renderGrids(users.responders)}</Box>
       </Box>
       <Box className="video-tools-wrapper">
         <Box className="video-live-wrapper">

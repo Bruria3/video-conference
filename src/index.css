@@ -17,9 +17,13 @@ body {
 .video-conference-app {
   display: grid;
   grid-template-columns: 1fr 9fr;
-  height: calc(100vh - 100px);
+  height: calc(100% - 100px);
 }
 
 .video-conference-layout-wrapper{
   direction: rtl;
+}
+
+.root-container{
+  height: 100vh;
 }
